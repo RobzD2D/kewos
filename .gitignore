@@ -1,0 +1,9 @@
+# Photos brutes non utilisées par le site (trop volumineuses pour le dépôt)
+Assets site/
+
+# Outils locaux
+.claude/
+
+# Système
+.DS_Store
+Thumbs.db

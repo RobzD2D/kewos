@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kewos — Employé Modèle | Site officiel de l'humoriste</title>
+<meta name="description" content="Kewos, humoriste alsacien, en tournée avec son one-man show Employé Modèle. Toutes les dates, la billetterie, les vidéos et le contact pro.">
+<link rel="canonical" href="https://www.kewos.fr/">
+
+<!-- Open Graph / partages -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Kewos">
+<meta property="og:title" content="Kewos — Employé Modèle">
+<meta property="og:description" content="Le one-man show de Kewos sur les galères professionnelles et la grande question : « tu veux faire quoi plus tard ? »">
+<meta property="og:image" content="hero-section.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#141C26">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Courier+Prime:wght@400;700&family=Bangers&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Fiche artiste pour Google -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Kewos",
+  "alternateName": "Kévin Ringenbach",
+  "jobTitle": "Humoriste",
+  "url": "https://www.kewos.fr/",
+  "sameAs": ["https://www.instagram.com/le_kewos/"]
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<!-- ══════════ ÉCRAN DE CHOIX (Stand-up vs Acting) ══════════ -->
+<div class="versus" id="versusGate" role="dialog" aria-modal="true" aria-label="Choisissez votre entrée : Stand-up ou Acting">
+  <div class="versus-inner">
+    <p class="versus-kicker">Kewos, c'est deux métiers</p>
+
+    <div class="versus-choices">
+      <button class="versus-choice versus-standup" type="button" data-target="#accueil">
+        <img src="images/stand-up.jpg" alt=""
+             data-try="images/stand-up.jpg,images/stand-up.jpeg,images/stand-up.png,stand-up.jpg" decoding="async">
+        <span class="versus-label">Stand-up</span>
+        <span class="versus-sub">Le one-man show Employé Modèle</span>
+      </button>
+
+      <span class="versus-vs" aria-hidden="true">VS</span>
+
+      <button class="versus-choice versus-acting" type="button" data-target="#acting">
+        <img src="images/acting.jpg" alt=""
+             data-try="images/acting.jpg,images/acting.jpeg,images/acting.png,acting.jpg" decoding="async">
+        <span class="versus-label">Acting</span>
+        <span class="versus-sub">Comédien — cinéma &amp; séries</span>
+      </button>
+    </div>
+
+    <button class="versus-skip" type="button" id="versusSkip">Passer</button>
+  </div>
+</div>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner glass" data-glass>
+    <a class="wordmark" href="#accueil">Kewos</a>
+
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <span class="nav-pill" aria-hidden="true"></span>
+      <a href="#spectacle">Le spectacle</a>
+      <a href="#acting">Acting</a>
+      <a href="#dates">Dates</a>
+      <a href="#videos">Vidéos</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#pro">Pro</a>
+    </nav>
+
+    <a class="btn btn-solid header-cta" href="#dates">Réserver</a>
+
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="menuMobile" aria-label="Ouvrir le menu">
+      <span></span><span></span>
+    </button>
+  </div>
+
+  <div class="menu-mobile glass" id="menuMobile" data-glass hidden>
+    <a href="#spectacle">Le spectacle</a>
+    <a href="#acting">Acting</a>
+    <a href="#dates">Dates</a>
+    <a href="#videos">Vidéos</a>
+    <a href="#parcours">Parcours</a>
+    <a href="#alerte">Alerte nouvelles dates</a>
+    <a href="#pro">Contact pro</a>
+    <a class="btn btn-solid" href="#dates">Réserver une place</a>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="hero" id="accueil">
+    <div class="hero-media">
+      <!-- L'image « hero-section » : posez-la à côté de index.html.
+           Le script teste .jpg / .jpeg / .png / .webp / .avif automatiquement. -->
+      <img src="hero-section.jpg" alt="Kewos sur scène dans son spectacle Employé Modèle"
+           data-try="hero-section.jpg,hero-section.jpeg,hero-section.png,hero-section.webp,hero-section.avif,images/hero-section.jpg,images/hero-section.png"
+           fetchpriority="high" decoding="async">
+    </div>
+
+    <div class="hero-body">
+      <p class="hero-kicker">One-man show — écrit et joué par Kévin Ringenbach</p>
+      <h1 class="hero-title"><span class="l1">Kewos</span><span class="l2">Employé<br>Modèle</span></h1>
+      <p class="hero-pitch">Depuis le collège, une seule question : « tu veux faire quoi plus tard&nbsp;? » Quinze ans de boulots plus tard, toujours pas de réponse. Mais un spectacle, oui.</p>
+      <div class="hero-actions">
+        <a class="btn btn-solid btn-lg" href="#dates">Voir les dates</a>
+        <a class="btn btn-glass btn-lg" href="#videos" data-glass>Regarder un extrait</a>
+      </div>
+    </div>
+
+    <a class="hero-next" href="#dates">
+      <span class="hero-next-label">Prochaine date</span>
+      <span class="hero-next-value">30.09 — Metz, La Comédie</span>
+      <span class="hero-next-cta">Il reste des places</span>
+    </a>
+  </section>
+
+  <!-- ══════════ LE SPECTACLE ══════════ -->
+  <section class="section spectacle" id="spectacle">
+    <div class="wrap grid-spectacle">
+
+      <div class="fiche" data-reveal>
+        <h2 class="section-title">Le spectacle</h2>
+
+        <dl class="fiche-meta">
+          <div><dt>Intitulé du poste</dt><dd>Employé Modèle</dd></div>
+          <div><dt>Durée</dt><dd>1 h 20, sans pause syndicale</dd></div>
+          <div><dt>Public</dt><dd>À partir de 12 ans</dd></div>
+          <div><dt>Expérience exigée</dt><dd>Avoir déjà douté un lundi matin</dd></div>
+        </dl>
+
+        <div class="prose">
+          <p>Kewos raconte son parcours professionnel : l'entreprise familiale, le food truck, le magasin bio, les figurations, et cette impression tenace que tout le monde autour de lui avait reçu un plan de carrière sauf lui.</p>
+          <p>À force de vouloir cocher les cases — le CDI, le crédit, la vie rangée — il enchaîne les postes sans jamais savoir ce qu'il veut vraiment. Entre absurde et sincérité, il transforme ses plantages en spectacle et vous invite à rire de vos propres questions restées sans réponse.</p>
+          <p class="prose-out">Parce qu'au fond, qui sait vraiment ce qu'il veut quand il est encore en train de se chercher&nbsp;?</p>
+        </div>
+
+        <a class="btn btn-solid" href="#dates">Réserver une place</a>
+      </div>
+
+      <figure class="affiche" data-reveal>
+        <!-- Remplacez par le visuel de l'affiche : affiche.jpg -->
+        <img src="affiche.jpg" alt="Affiche du spectacle Employé Modèle"
+             data-try="affiche.jpg,affiche.png,affiche.webp,images/affiche.jpg" loading="lazy" decoding="async">
+        <figcaption>Employé Modèle — en tournée dans le Grand Est et partout ailleurs</figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- ══════════ ACTING ══════════ -->
+  <!--
+    ⚠️ CONTENU DE DÉMONSTRATION — à remplacer avant mise en ligne :
+    la vraie filmographie/crédits, une photo définitive (images/acting.jpg)
+    et un lien de bande démo si disponible.
+  -->
+  <section class="section acting" id="acting">
+    <div class="wrap grid-acting">
+
+      <figure class="acting-still" data-reveal>
+        <img src="images/acting.jpg" alt="Kewos, alias Kévin Ringenbach, en tournage"
+             data-try="images/acting.jpg,images/acting.jpeg,images/acting.png,acting.jpg" loading="lazy" decoding="async">
+        <figcaption>Kévin Ringenbach — comédien pour le cinéma et les séries</figcaption>
+      </figure>
+
+      <div class="fiche" data-reveal>
+        <h2 class="section-title">Acting</h2>
+
+        <dl class="fiche-meta">
+          <div><dt>Nom de scène</dt><dd>Kewos</dd></div>
+          <div><dt>Nom civil</dt><dd>Kévin Ringenbach</dd></div>
+          <div><dt>Registre</dt><dd>Comédie, second rôle, figuration parlante</dd></div>
+          <div><dt>Basé à</dt><dd>Grand Est — mobile France entière</dd></div>
+        </dl>
+
+        <div class="prose">
+          <p>Avant la scène, il y a eu les plateaux : figurations pour le cinéma et les séries, dont un rôle sur une production Netflix. Quelques répliques, beaucoup d'attente, et le goût du jeu qui reste.</p>
+          <p>Aujourd'hui, Kewos continue de mener les deux de front — la scène du stand-up et celle du tournage — avec la même énergie comique.</p>
+        </div>
+
+        <a class="btn btn-line" href="mailto:casting@kewos.fr">Contacter pour un casting</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════ DATES ══════════ -->
+  <!--
+    ⚠️ DONNÉES DE DÉMONSTRATION — à remplacer par les vraies dates et les vrais liens
+    de billetterie avant mise en ligne. Une ligne = un <li class="date-row">.
+    Statuts disponibles : lien "Réserver", <span class="stamp">Complet</span>,
+    ou <span class="stamp stamp-last">Dernières places</span>.
+  -->
+  <section class="section dates" id="dates">
+    <div class="wrap">
+      <header class="section-head" data-reveal>
+        <h2 class="section-title">Les dates</h2>
+        <p class="section-note">Une salle près de chez vous manque à l'appel&nbsp;? <a href="#alerte">Prévenez-moi</a>, je transmets aux programmateurs.</p>
+      </header>
+
+      <ol class="date-list" data-stagger>
+
+        <li class="date-row" data-reveal>
+          <time class="date-when" datetime="2026-09-30"><span class="d">30</span><span class="m">sept.</span><span class="y">2026</span></time>
+          <span class="date-where"><strong>Metz</strong><em>La Comédie de Metz</em></span>
+          <span class="date-status"><a class="btn btn-line" href="#" rel="noopener">Réserver</a></span>
+        </li>
+
+        <li class="date-row" data-reveal>
+          <time class="date-when" datetime="2026-10-17"><span class="d">17</span><span class="m">oct.</span><span class="y">2026</span></time>
+          <span class="date-where"><strong>Colmar</strong><em>Comedy Club</em></span>
+          <span class="date-status"><span class="stamp">Complet</span></span>
+        </li>
+
+        <li class="date-row" data-reveal>
+          <time class="date-when" datetime="2026-11-07"><span class="d">07</span><span class="m">nov.</span><span class="y">2026</span></time>
+          <span class="date-where"><strong>Nancy</strong><em>Le Gros Clou</em></span>
+          <span class="date-status"><span class="stamp stamp-last">Dernières places</span></span>
+        </li>
+
+        <li class="date-row" data-reveal>
+          <time class="date-when" datetime="2026-12-12"><span class="d">12</span><span class="m">déc.</span><span class="y">2026</span></time>
+          <span class="date-where"><strong>Ribeauvillé</strong><em>Casino Barrière</em></span>
+          <span class="date-status"><a class="btn btn-line" href="#" rel="noopener">Réserver</a></span>
+        </li>
+
+        <li class="date-row" data-reveal>
+          <time class="date-when" datetime="2027-01-23"><span class="d">23</span><span class="m">janv.</span><span class="y">2027</span></time>
+          <span class="date-where"><strong>Blotzheim</strong><em>Casino Barrière</em></span>
+          <span class="date-status"><a class="btn btn-line" href="#" rel="noopener">Réserver</a></span>
+        </li>
+
+        <li class="date-row" data-reveal>
+          <time class="date-when" datetime="2027-02-06"><span class="d">06</span><span class="m">févr.</span><span class="y">2027</span></time>
+          <span class="date-where"><strong>Arras</strong><em>Le Pont de Singe</em></span>
+          <span class="date-status"><span class="stamp">Complet</span></span>
+        </li>
+
+        <li class="date-row" data-reveal>
+          <time class="date-when" datetime="2027-03-13"><span class="d">13</span><span class="m">mars</span><span class="y">2027</span></time>
+          <span class="date-where"><strong>Wittelsheim</strong><em>Salle Grassegert</em></span>
+          <span class="date-status"><a class="btn btn-line" href="#" rel="noopener">Réserver</a></span>
+        </li>
+
+        <li class="date-row" data-reveal>
+          <time class="date-when" datetime="2027-04-10"><span class="d">10</span><span class="m">avril</span><span class="y">2027</span></time>
+          <span class="date-where"><strong>Guebwiller</strong><em>Les Dominicains</em></span>
+          <span class="date-status"><span class="stamp stamp-last">Dernières places</span></span>
+        </li>
+
+      </ol>
+    </div>
+  </section>
+
+  <!-- ══════════ VIDÉOS ══════════ -->
+  <section class="section videos" id="videos">
+    <div class="wrap">
+      <header class="section-head" data-reveal>
+        <h2 class="section-title">Vidéos</h2>
+        <p class="section-note">Des extraits, des passages en club, et quelques trucs filmés dans une cuisine.</p>
+      </header>
+
+      <p class="videos-kicker" data-reveal>Extraits du spectacle</p>
+      <!-- Remplacez data-yt par l'identifiant de la vidéo YouTube (ce qui suit v=) -->
+      <div class="video-grid" data-stagger>
+        <article class="video" data-reveal>
+          <button class="video-play" data-yt="dQw4w9WgXcQ" data-title="Extrait — Employé Modèle">
+            <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            <span class="video-icon" aria-hidden="true"></span>
+            <span class="video-label">Extrait du spectacle<em>Lire la vidéo</em></span>
+          </button>
+        </article>
+        <article class="video" data-reveal>
+          <button class="video-play" data-yt="dQw4w9WgXcQ" data-title="Passage en comedy club">
+            <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            <span class="video-icon" aria-hidden="true"></span>
+            <span class="video-label">Passage en comedy club<em>Lire la vidéo</em></span>
+          </button>
+        </article>
+        <article class="video" data-reveal>
+          <button class="video-play" data-yt="dQw4w9WgXcQ" data-title="Teaser 2026">
+            <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            <span class="video-icon" aria-hidden="true"></span>
+            <span class="video-label">Teaser de la tournée<em>Lire la vidéo</em></span>
+          </button>
+        </article>
+      </div>
+
+      <!-- Vraies publications vidéo de @le_kewos. Pour en ajouter une : ouvrir le reel/post sur
+           Instagram → icône ⋯ → « Intégrer » → copier l'URL et la coller dans un nouvel article,
+           en suivant exactement le modèle ci-dessous (deux data-instgrm-permalink identiques). -->
+      <p class="videos-kicker" data-reveal>Sur Instagram</p>
+      <div class="insta-grid" data-stagger>
+        <article class="insta-card" data-reveal>
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/le_kewos/reel/DF5mDuxNj-P/" data-instgrm-version="14">
+            <a href="https://www.instagram.com/le_kewos/reel/DF5mDuxNj-P/" target="_blank" rel="noopener">Voir sur Instagram</a>
+          </blockquote>
+        </article>
+        <article class="insta-card" data-reveal>
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTaXDFFDaus/" data-instgrm-version="14">
+            <a href="https://www.instagram.com/reel/DTaXDFFDaus/" target="_blank" rel="noopener">Voir sur Instagram</a>
+          </blockquote>
+        </article>
+        <article class="insta-card" data-reveal>
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DGVdkOFoYPr/" data-instgrm-version="14">
+            <a href="https://www.instagram.com/p/DGVdkOFoYPr/" target="_blank" rel="noopener">Voir sur Instagram</a>
+          </blockquote>
+        </article>
+      </div>
+
+      <p class="videos-more" data-reveal>Le reste est sur <a class="link-glass" href="https://www.instagram.com/le_kewos/" data-glass target="_blank" rel="noopener">Instagram</a> et <a class="link-glass" href="#" data-glass target="_blank" rel="noopener">YouTube</a>.</p>
+    </div>
+  </section>
+
+  <!-- ══════════ PARCOURS ══════════ -->
+  <section class="section parcours" id="parcours">
+    <div class="wrap grid-parcours">
+
+      <div class="parcours-intro" data-reveal>
+        <h2 class="section-title">Le parcours</h2>
+        <p>Kévin Ringenbach, alias Kewos, est né à Guebwiller et a mis quinze ans à trouver le seul métier où son CV devient un argument de vente.</p>
+        <ul class="palmares">
+          <li><span>2023</span> Vainqueur de la 1<sup>re</sup> saison du Colmar Comedy Club</li>
+          <li><span>2023</span> Prix du public au Gros Clou, festival d'humour du Grand Est</li>
+          <li><span>2024</span> Lauréat du festival Drôlement Bien, Besançon</li>
+        </ul>
+        <figure class="portrait">
+          <img src="portrait.jpg" alt="Portrait de Kewos"
+               data-try="portrait.jpg,portrait.png,images/portrait.jpg" loading="lazy" decoding="async">
+        </figure>
+      </div>
+
+      <ol class="cv" data-stagger>
+        <li class="cv-item" data-reveal><span class="cv-year">2010</span><h3>Entreprise familiale</h3><p>Le plan tout tracé. Tracé par quelqu'un d'autre.</p></li>
+        <li class="cv-item" data-reveal><span class="cv-year">2014</span><h3>Food truck</h3><p>Indépendance, liberté, friteuse.</p></li>
+        <li class="cv-item" data-reveal><span class="cv-year">2017</span><h3>Magasin bio</h3><p>Vendre du sens à des gens qui en cherchaient aussi.</p></li>
+        <li class="cv-item" data-reveal><span class="cv-year">2019</span><h3>Figuration cinéma &amp; séries</h3><p>Quelques rôles, dont un sur Netflix. Deux répliques, beaucoup d'attente.</p></li>
+        <li class="cv-item cv-now" data-reveal><span class="cv-year">2022</span><h3>Humoriste</h3><p>Premier passage en scène ouverte. Le seul poste qu'il n'a jamais eu envie de quitter.</p></li>
+      </ol>
+
+    </div>
+  </section>
+
+  <!-- ══════════ ALERTE ══════════ -->
+  <section class="section alerte" id="alerte">
+    <div class="wrap alerte-inner" data-reveal>
+      <div>
+        <h2 class="section-title">Alerte nouvelles dates</h2>
+        <p>Les places partent souvent avant l'annonce publique. Laissez votre e-mail et votre ville : vous serez prévenu en premier quand une date tombe près de chez vous.</p>
+      </div>
+      <!-- Branchez l'attribut action sur Brevo, Mailchimp ou votre outil d'e-mailing -->
+      <form class="alerte-form" action="#" method="post" novalidate>
+        <label class="field">
+          <span>Votre e-mail</span>
+          <input type="email" name="email" required autocomplete="email" placeholder="prenom@exemple.fr">
+        </label>
+        <label class="field">
+          <span>Votre ville</span>
+          <input type="text" name="ville" autocomplete="address-level2" placeholder="Mulhouse">
+        </label>
+        <label class="check">
+          <input type="checkbox" name="consent" required>
+          <span>J'accepte de recevoir les annonces de dates par e-mail. Désinscription en un clic.</span>
+        </label>
+        <button class="btn btn-solid" type="submit">Me prévenir</button>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ══════════ PRO ══════════ -->
+  <section class="section pro" id="pro">
+    <div class="wrap">
+      <header class="section-head" data-reveal>
+        <h2 class="section-title">Espace pro</h2>
+        <p class="section-note">Salles, festivals, comités d'entreprise, presse : voici où écrire.</p>
+      </header>
+
+      <div class="pro-grid" data-stagger>
+        <div class="pro-card" data-reveal>
+          <h3>Booking &amp; diffusion</h3>
+          <p>Pour programmer Employé Modèle dans votre salle ou votre festival.</p>
+          <a class="link-glass" href="mailto:booking@kewos.fr" data-glass>booking@kewos.fr</a>
+        </div>
+        <div class="pro-card" data-reveal>
+          <h3>Presse</h3>
+          <p>Demandes d'interview, dossier de presse, photos haute définition.</p>
+          <a class="link-glass" href="mailto:presse@kewos.fr" data-glass>presse@kewos.fr</a>
+        </div>
+        <div class="pro-card" data-reveal>
+          <h3>Entreprises &amp; privé</h3>
+          <p>Soirées d'entreprise, arbres de Noël, séminaires. Oui, c'est ironique.</p>
+          <a class="link-glass" href="mailto:contact@kewos.fr" data-glass>contact@kewos.fr</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <a class="wordmark footer-mark" href="#accueil">Kewos</a>
+
+    <nav class="footer-social" aria-label="Réseaux sociaux">
+      <a href="https://www.instagram.com/le_kewos/" target="_blank" rel="noopener">Instagram</a>
+      <a href="#" target="_blank" rel="noopener">TikTok</a>
+      <a href="#" target="_blank" rel="noopener">YouTube</a>
+      <a href="#" target="_blank" rel="noopener">Facebook</a>
+    </nav>
+
+    <nav class="footer-links" aria-label="Liens utiles">
+      <a href="#dates">Dates</a>
+      <a href="#pro">Contact pro</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+    </nav>
+
+    <p class="footer-legal">© <span id="year">2026</span> Kewos — Employé Modèle. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<!-- Lecteur vidéo -->
+<dialog class="lightbox" id="lightbox" aria-label="Lecteur vidéo">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Fermer la vidéo">Fermer</button>
+  <div class="lightbox-frame" id="lightboxFrame"></div>
+</dialog>
+
+<!-- Rend les blockquotes .instagram-media de la section #videos en lecteurs natifs -->
+<script async src="https://www.instagram.com/embed.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
