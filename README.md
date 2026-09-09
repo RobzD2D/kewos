@@ -1,4 +1,4 @@
-# Site Kewos — Employé Modèle
+# Site Kéwos – Employé Modèle
 
 Site statique, sans dépendance ni build. On ouvre `index.html` dans un navigateur et ça tourne.
 
@@ -26,18 +26,19 @@ l'image (le texte occupe le bas). Compresser en WebP autour de 300 Ko.
 
 ## À remplacer avant mise en ligne
 
+Les dates, crédits, e-mail de contact et liens sociaux ont été repris du site officiel
+[lekewos.fr](https://www.lekewos.fr/) le 2026-09-05. Ce qui reste à vérifier ou compléter :
+
 | Où | Quoi |
 |---|---|
-| Section `#dates` | Les 8 lignes sont des données de démo. Un bloc de commentaire au-dessus explique le format. |
-| `href="#"` des boutons Réserver | Les vraies URL de billetterie |
-| `data-yt="dQw4w9WgXcQ"` | L'identifiant YouTube de chaque vidéo (ce qui suit `v=` dans l'URL) |
-| `hero-next-value` | La prochaine date, à tenir à jour manuellement |
-| Section `#acting` | Texte de démo : les vrais crédits (films, séries), une photo définitive et un lien de bande démo si disponible. |
-| `booking@ / presse@ / contact@ / casting@` | Les vraies adresses |
-| Liens TikTok, YouTube, Facebook | Dans le pied de page |
+| Section `#dates` | Les salles précises ne sont pas indiquées sur le site officiel – seul le département est affiché (ex. « Arras (62) »). À compléter si vous avez les noms de salle. |
+| `data-yt="dQw4w9WgXcQ"` | Toujours un identifiant factice. L'identifiant YouTube de chaque vidéo (ce qui suit `v=` dans l'URL) |
+| `hero-next-value` | Pointe actuellement sur la date la plus proche trouvée (Compiègne, 24/09/2026) – à tenir à jour manuellement au fil des annonces |
+| `Durée` dans la fiche du spectacle (« 1 h 20 ») | Les sources trouvées se contredisent (environ 40 min vs environ 1 h selon les avis) – à confirmer |
+| Section `#acting` | Crédits réels intégrés (Tapie, Le Livreur de Noël, Face à Face, César Wagner) ; un lien de bande démo et une photo plus définitive restent optionnels |
 | `action="#"` du formulaire | L'endpoint Brevo, Mailchimp ou autre |
-| `mentions-legales.html` | Éditeur, hébergeur, SIRET, crédits photo |
-| Balise `canonical` et `og:image` | Le vrai domaine |
+| `mentions-legales.html` | Créée avec le contenu réel (éditeur, RGPD), hébergeur mis à jour sur Netlify. Il manque encore les CGU et la Politique de confidentialité séparées si vous les voulez sur des pages dédiées. |
+| Balise `canonical` et `og:image` | Domaine placeholder `kewos.fr` – le vrai domaine officiel est `lekewos.fr` |
 
 ## Statuts de date disponibles
 

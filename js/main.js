@@ -22,6 +22,14 @@
     ];
     lockedEls.forEach(function (el) { if (el) el.inert = true; });
 
+    // Sur certains OS/navigateurs, le clic qui redonne le focus à une fenêtre
+    // ou un onglet en arrière-plan est aussi transmis à la page. Sans ce garde-fou,
+    // ce clic « d'activation » pourrait tomber sur un choix et fermer l'écran
+    // avant même que l'utilisateur ait pu regarder ou survoler quoi que ce soit.
+    var lastWindowFocusAt = 0;
+    window.addEventListener('focus', function () { lastWindowFocusAt = Date.now(); });
+    var isActivatingClick = function () { return Date.now() - lastWindowFocusAt < 400; };
+
     var leaveVersus = function (targetSelector) {
       versus.classList.add('is-leaving');
       htmlEl.classList.remove('versus-locked');
@@ -37,11 +45,17 @@
     };
 
     versus.querySelectorAll('.versus-choice').forEach(function (btn) {
-      btn.addEventListener('click', function () { leaveVersus(btn.getAttribute('data-target')); });
+      btn.addEventListener('click', function (e) {
+        if (isActivatingClick()) { e.preventDefault(); return; }
+        leaveVersus(btn.getAttribute('data-target'));
+      });
     });
 
     var versusSkip = document.getElementById('versusSkip');
-    if (versusSkip) versusSkip.addEventListener('click', function () { leaveVersus('#accueil'); });
+    if (versusSkip) versusSkip.addEventListener('click', function (e) {
+      if (isActivatingClick()) { e.preventDefault(); return; }
+      leaveVersus('#accueil');
+    });
 
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && !versus.hidden) leaveVersus('#accueil');
@@ -210,6 +224,9 @@
     btn.addEventListener('click', function () {
       var id = btn.getAttribute('data-yt');
       if (!id) return;
+      var ratio = btn.getAttribute('data-ratio') || '16/9';
+      frame.style.aspectRatio = ratio;
+      lightbox.classList.toggle('is-vertical', ratio === '9/16');
       frame.innerHTML =
         '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0" ' +
         'title="' + (btn.getAttribute('data-title') || 'Vidéo') + '" ' +
