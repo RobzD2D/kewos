@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- La page sous-bock est volontairement absente : elle n'est accessible que par le QR code. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.lekewos.fr/</loc>
+  </url>
+  <url>
+    <loc>https://www.lekewos.fr/casting</loc>
+  </url>
+</urlset>

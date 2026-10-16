@@ -1,0 +1,9 @@
+# Redirections Netlify : anciennes adresses du site Systeme.io (lekewos.fr)
+# vers les sections du nouveau site, pour ne pas casser les liens déjà partagés.
+# /sousbock existe toujours (sousbock.html) : pas de redirection.
+
+/spectacle   /#spectacle   301
+/contact     /#pro         301
+/book        /casting      301
+/video       /#videos      301
+/arras2      /#dates       301

@@ -2,7 +2,7 @@
    KEWOS — comportements du site
    0. Écran de choix (versus)  1. Images  2. Hero  3. En-tête
    4. Verre liquide  5. Menu mobile  6. Apparitions au scroll
-   7. Lien actif  8. Vidéos  9. Formulaire  10. Année
+   7. Lien actif  8. Vidéos  9. Formulaires  10. Année  11. Dates passées
    ===================================================================== */
 (function () {
   'use strict';
@@ -220,18 +220,21 @@
     if (lightbox.open) lightbox.close();
   };
 
-  document.querySelectorAll('.video-play').forEach(function (btn) {
+  // Tout élément portant data-yt ouvre le lecteur (vignettes, bouton bande démo…).
+  if (lightbox) document.querySelectorAll('[data-yt]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var id = btn.getAttribute('data-yt');
       if (!id) return;
       var ratio = btn.getAttribute('data-ratio') || '16/9';
       frame.style.aspectRatio = ratio;
       lightbox.classList.toggle('is-vertical', ratio === '9/16');
-      frame.innerHTML =
-        '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0" ' +
-        'title="' + (btn.getAttribute('data-title') || 'Vidéo') + '" ' +
-        'allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" ' +
-        'allowfullscreen></iframe>';
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) + '?autoplay=1&rel=0';
+      iframe.title = btn.getAttribute('data-title') || 'Vidéo';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture';
+      iframe.allowFullscreen = true;
+      frame.innerHTML = '';
+      frame.appendChild(iframe);
       if (typeof lightbox.showModal === 'function') lightbox.showModal();
     });
   });
@@ -242,20 +245,91 @@
     lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeVideo(); });
   }
 
-  /* ---------- 9. Formulaire d'alerte ---------- */
-  // Message local en attendant le branchement sur Brevo / Mailchimp.
-  var form = document.querySelector('.alerte-form');
-  if (form) {
+  /* ---------- 9. Formulaires : envoi par e-mail ---------- */
+  // Les formulaires marqués data-send partent vers le.kewos@gmail.com via FormSubmit.
+  // Au tout premier envoi, FormSubmit écrit à cette adresse pour faire activer
+  // le formulaire (bouton « Activate Form ») : rien n'est transmis avant ce clic.
+  // Sans JavaScript, l'attribut action du formulaire prend le relais.
+  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/le.kewos@gmail.com';
+
+  document.querySelectorAll('form[data-send]').forEach(function (form) {
+    var msg = form.querySelector('.form-msg');
+    var submit = form.querySelector('[type="submit"]');
+
     form.addEventListener('submit', function (e) {
-      var msg = form.querySelector('.form-msg');
-      if (!form.checkValidity()) return;
       e.preventDefault();
-      msg.textContent = 'C\'est noté. Vous serez prévenu dès la prochaine annonce.';
-      form.reset();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      var data = {};
+      new FormData(form).forEach(function (value, key) { data[key] = value; });
+      if (data._honey) return; // champ piège rempli : un robot
+
+      submit.disabled = true;
+      msg.classList.remove('is-error');
+      msg.textContent = 'Envoi en cours…';
+
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (res) {
+          if (String(res.success) !== 'true') throw new Error(res.message || 'Échec');
+          msg.textContent = form.getAttribute('data-success') || 'Message envoyé, merci !';
+          form.reset();
+        })
+        .catch(function () {
+          msg.classList.add('is-error');
+          msg.innerHTML = 'L\'envoi n\'a pas abouti. Écrivez directement à ' +
+            '<a href="mailto:le.kewos@gmail.com">le.kewos@gmail.com</a>.';
+        })
+        .then(function () { submit.disabled = false; });
     });
-  }
+  });
 
   /* ---------- 10. Année du copyright ---------- */
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
+
+  /* ---------- 11. Dates passées : retirées le lendemain ---------- */
+  // Filet de sécurité si la liste n'a pas été mise à jour à la main.
+  // Le bandeau « Prochaine date » du hero suit la première date non complète.
+  var today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  document.querySelectorAll('.date-list').forEach(function (list) {
+    list.querySelectorAll('.date-row').forEach(function (row) {
+      var time = row.querySelector('time[datetime]');
+      var day = time && new Date(time.getAttribute('datetime').slice(0, 10) + 'T00:00:00');
+      if (day && day < today) row.parentNode.removeChild(row);
+    });
+
+    if (!list.querySelector('.date-row')) {
+      var empty = document.createElement('li');
+      empty.className = 'date-empty';
+      empty.innerHTML = 'Nouvelles dates très bientôt. Les annonces tombent d\'abord sur ' +
+        '<a href="https://www.instagram.com/le_kewos/" target="_blank" rel="noopener">Instagram</a>.';
+      list.appendChild(empty);
+    }
+  });
+
+  var heroNext = document.querySelector('.hero-next');
+  var firstList = document.querySelector('#dates .date-list');
+  if (heroNext && firstList) {
+    var next = null;
+    firstList.querySelectorAll('.date-row').forEach(function (row) {
+      if (!next && !row.querySelector('.stamp')) next = row;
+    });
+
+    if (!next) {
+      heroNext.style.display = 'none';
+    } else {
+      var iso = next.querySelector('time').getAttribute('datetime');
+      var city = next.querySelector('.date-where strong').textContent;
+      var dept = (next.querySelector('.date-where em').textContent.match(/\(\d+\)/) || [''])[0];
+      heroNext.querySelector('.hero-next-value').textContent =
+        iso.slice(8, 10) + '.' + iso.slice(5, 7) + ' – ' + city + (dept ? ' ' + dept : '');
+    }
+  }
 })();

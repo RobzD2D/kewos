@@ -49,6 +49,7 @@ body{
 }
 
 img{ max-width:100%; display:block; }
+.nowrap{ white-space:nowrap; }
 a{ color:inherit; }
 button{ font:inherit; color:inherit; }
 
@@ -623,6 +624,10 @@ section[id]{ scroll-margin-top:6.5rem; }
 
 .fiche .prose{ margin-bottom:2rem; }
 .fiche .prose p{ margin:0 0 1.1em; }
+.fiche-actions{ display:flex; flex-wrap:wrap; gap:.75rem; }
+.fiche-docs{ margin:1.3rem 0 0; font-size:.94rem; color:var(--encre-60); }
+.fiche-docs a{ color:var(--tampon); font-weight:600; text-underline-offset:.22em; }
+.fiche-docs span{ font-family:var(--machine); font-size:.78rem; }
 
 .affiche{
   margin:0;
@@ -724,6 +729,14 @@ section[id]{ scroll-margin-top:6.5rem; }
 
 .date-status{ justify-self:end; }
 
+/* Affiché par le script quand toutes les dates sont passées */
+.date-empty{
+  padding:1.6rem clamp(.6rem,2vw,1.2rem);
+  border-bottom:1px solid var(--encre-14);
+  color:var(--encre-60);
+}
+.date-empty a{ color:var(--tampon); text-underline-offset:.22em; }
+
 /* Tampon administratif */
 .stamp{
   display:inline-block;
@@ -750,15 +763,114 @@ section[id]{ scroll-margin-top:6.5rem; }
 [data-reveal] .stamp-last{ transform:rotate(4deg) scale(1.9); }
 [data-reveal].is-in .stamp-last{ transform:rotate(4deg) scale(1); }
 
+/* ------------------------------ 10b. Avis du public ------------------------------ */
+.avis-stats{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  margin:0 0 clamp(2.5rem,6vw,4rem);
+  border-block:1px solid var(--encre-14);
+}
+/* Le chiffre au-dessus de sa légende, sans casser l'ordre dt/dd */
+.avis-stats > div{
+  display:flex; flex-direction:column-reverse; justify-content:flex-end;
+  padding:1.4rem .2rem;
+}
+.avis-stats > div + div{
+  border-left:1px solid var(--encre-14);
+  padding-left:clamp(.8rem,3vw,2rem);
+}
+.avis-stats dd{
+  margin:0;
+  font-family:var(--display);
+  font-weight:900;
+  font-variation-settings:"wdth" 120;
+  font-size:clamp(1.6rem, 1rem + 3.6vw, 4rem);
+  line-height:1;
+  letter-spacing:-.02em;
+  color:var(--tampon);
+}
+.avis-stats dt{
+  margin-top:.55rem;
+  font-family:var(--machine);
+  font-size:.76rem;
+  line-height:1.35;
+  color:var(--encre-60);
+}
+
+.avis-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:clamp(1rem,2.5vw,1.6rem);
+}
+.avis{
+  margin:0;
+  display:flex; flex-direction:column;
+  padding:1.5rem 1.4rem 1.3rem;
+  background:#FFFDF8;
+  border:1px solid var(--encre-14);
+  border-radius:8px;
+  box-shadow:0 30px 50px -45px rgba(15,48,67,.6);
+}
+.avis-stars{
+  margin:0 0 .7rem;
+  font-size:1rem;
+  letter-spacing:.18em;
+  color:var(--tampon);
+}
+.avis h3{
+  font-size:1.25rem;
+  margin-bottom:.7rem;
+  font-variation-settings:"wdth" 108;
+}
+.avis blockquote{ flex:1; margin:0 0 1.2rem; }
+.avis blockquote p{ margin:0; font-size:.96rem; }
+.avis figcaption{
+  font-family:var(--machine);
+  font-size:.82rem;
+  color:var(--encre-60);
+}
+.avis figcaption::before{ content:"— "; }
+
+.avis figcaption span{ opacity:.75; }
+.avis-source{ margin:1.8rem 0 0; font-size:.95rem; color:var(--encre-60); }
+
+/* Sur téléphone, trois colonnes sont trop étroites : une ligne par chiffre */
+@media (max-width:520px){
+  .avis-stats{ grid-template-columns:1fr; }
+  .avis-stats > div{
+    flex-direction:row-reverse; justify-content:flex-end; align-items:baseline;
+    gap:1rem;
+    padding:1rem 0;
+  }
+  .avis-stats > div + div{ border-left:0; border-top:1px solid var(--encre-14); padding-left:0; }
+  .avis-stats dd{ min-width:3.6em; flex-shrink:0; white-space:nowrap; font-size:1.9rem; }
+  .avis-stats dt{ margin-top:0; }
+}
+
+/* Variante sur fond encre (accueil) : les cartes restent sur papier */
+.avis-section{ background:var(--encre); color:#F6F2EA; }
+.avis-section .section-note{ color:rgba(246,242,234,.65); }
+.avis-section .avis-stats{ border-color:rgba(246,242,234,.16); }
+.avis-section .avis-stats > div + div{ border-color:rgba(246,242,234,.16); }
+.avis-section .avis-stats dd{ color:var(--tampon-doux); }
+.avis-section .avis-stats dt{ color:rgba(246,242,234,.62); }
+.avis-section .avis{ color:var(--encre); box-shadow:0 30px 50px -40px rgba(0,0,0,.8); }
+.avis-section .avis-source{ color:rgba(246,242,234,.7); }
+.avis-section .avis-source a{ color:var(--tampon-doux); text-underline-offset:.22em; }
+
 /* ------------------------------ 11. Vidéos ------------------------------ */
 .videos{ background:var(--scene); color:#F6F2EA; }
 .videos .section-note{ color:rgba(246,242,234,.62); }
 .videos .section-note a{ color:var(--tampon-doux); }
 
+/* Deux vignettes par ligne : assez grandes pour que les titres tiennent. */
 .video-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(2,minmax(0,1fr));
   gap:clamp(1rem,2.5vw,1.6rem);
+}
+@media (max-width:640px){
+  .video-grid{ grid-template-columns:1fr; }
 }
 .shorts-grid{
   display:grid;
@@ -939,6 +1051,16 @@ section[id]{ scroll-margin-top:6.5rem; }
 .check input{ margin-top:.25rem; accent-color:var(--tampon); }
 .alerte-form .btn{ align-self:flex-start; }
 .form-msg{ margin:0; font-size:.88rem; color:#8FCB9B; min-height:1.2em; }
+.form-msg.is-error{ color:#F2A38A; }
+.form-msg a{ color:inherit; text-underline-offset:.2em; }
+
+/* Champ piège anti-robots : invisible pour les humains */
+.hp{
+  position:absolute !important;
+  left:-9999px;
+  width:1px; height:1px;
+  overflow:hidden;
+}
 
 /* ------------------------------ 14. Pro ------------------------------ */
 .grid-pro{
@@ -1103,3 +1225,98 @@ section[id]{ scroll-margin-top:6.5rem; }
 .legal p,.legal ul{ margin:0 0 1em; }
 .legal ul{ padding-left:1.1rem; }
 .legal a{ color:var(--tampon); text-underline-offset:.22em; }
+.legal a.btn-solid{ color:#FBF6EE; text-decoration:none; }
+.legal-kicker{ margin:0 0 .8rem; font-family:var(--machine); font-size:.82rem; letter-spacing:.06em; color:var(--encre-60); }
+
+/* ------------------------------ 21. Page casting ------------------------------ */
+.page-casting .section{ padding-top:calc(var(--rythme) + 3.5rem); }
+.casting-intro{ max-width:60ch; margin:0 0 clamp(2rem,5vw,3rem); color:var(--encre-60); }
+
+.grid-casting{
+  display:grid;
+  grid-template-columns:minmax(0,1.45fr) minmax(0,.75fr);
+  gap:clamp(2rem,5vw,4rem);
+  align-items:start;
+}
+
+/* Formulaire sur papier : mêmes champs que l'alerte, version claire */
+.form-light{
+  display:flex; flex-direction:column; gap:2.2rem;
+  padding:clamp(1.4rem,4vw,2.6rem);
+  background:#FFFDF8;
+  border:1px solid var(--encre-14);
+  border-radius:8px;
+  box-shadow:0 40px 70px -45px rgba(15,48,67,.6);
+}
+.form-light fieldset{ min-width:0; margin:0; padding:0; border:0; }
+.form-light legend{
+  padding:0; margin-bottom:1.1rem;
+  font-family:var(--machine);
+  font-weight:700;
+  font-size:.8rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--tampon);
+}
+.form-grid{
+  align-items:end;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1rem 1.2rem;
+}
+.form-grid .field-full{ grid-column:1/-1; }
+
+.form-light .field span{ color:var(--encre-60); }
+.form-light .field span small{ font-size:inherit; opacity:.75; }
+.form-light .req{ color:var(--tampon); }
+.form-light .field input,
+.form-light .field select,
+.form-light .field textarea{
+  width:100%;
+  font:inherit;
+  color:var(--encre);
+  background:#fff;
+  border:1px solid var(--encre-14);
+  border-radius:12px;
+  padding:.8rem .95rem;
+  transition:border-color .3s, box-shadow .3s;
+}
+.form-light .field textarea{ min-height:7.5rem; resize:vertical; }
+.form-light .field select{
+  appearance:none;
+  padding-right:2.6rem;
+  background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%230F3043' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 1rem center;
+}
+.form-light .field input::placeholder,
+.form-light .field textarea::placeholder{ color:rgba(15,48,67,.38); }
+.form-light .field input:focus,
+.form-light .field select:focus,
+.form-light .field textarea:focus{
+  outline:none;
+  background-color:#fff;
+  border-color:var(--encre);
+  box-shadow:0 0 0 3px rgba(223,128,56,.25);
+}
+.form-light .check{ max-width:none; color:var(--encre-60); }
+.form-light .check a{ color:var(--tampon); text-underline-offset:.2em; }
+
+.form-foot{ display:flex; flex-wrap:wrap; align-items:center; gap:1rem 1.5rem; }
+.form-note{ margin:0; font-family:var(--machine); font-size:.76rem; color:var(--encre-60); }
+.form-light .form-msg{ flex-basis:100%; color:#2E7D4F; }
+.form-light .form-msg.is-error{ color:#B3412A; }
+
+/* Pas de position collante : le profil est plus haut que l'écran et ses boutons resteraient cachés. */
+.casting-aside .acting-still{ margin-bottom:1.8rem; transform:rotate(1deg); }
+.casting-aside .acting-still img{ aspect-ratio:4/5; }
+.casting-aside h2{ font-size:1.4rem; margin-bottom:1rem; font-variation-settings:"wdth" 108; }
+.casting-aside .fiche-meta{ margin-bottom:1.6rem; }
+.casting-aside .fiche-meta > div{ grid-template-columns:minmax(6.5rem,38%) 1fr; }
+.casting-aside .fiche-meta a{ color:var(--tampon); text-underline-offset:.2em; }
+
+@media (max-width:1000px){
+  .grid-casting{ grid-template-columns:1fr; }
+  .casting-aside{ max-width:520px; }
+}
+@media (max-width:640px){
+  .form-grid{ grid-template-columns:1fr; }
+}

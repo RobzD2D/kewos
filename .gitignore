@@ -1,8 +1,9 @@
 # Photos brutes non utilisées par le site (trop volumineuses pour le dépôt)
 Assets site/
 
-# Outils locaux
+# Outils locaux (.mcp.json contient une clé d'API : ne jamais le publier)
 .claude/
+.mcp.json
 
 # Système
 .DS_Store

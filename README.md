@@ -1,44 +1,53 @@
 # Site Kéwos – Employé Modèle
 
-Site statique, sans dépendance ni build. On ouvre `index.html` dans un navigateur et ça tourne.
+Site statique, sans dépendance ni build, prévu pour Netlify (`/casting` sert `casting.html`,
+`404.html` est utilisée automatiquement).
 
-## Installation
-
-Copier le contenu de ce dossier dans `D:\Robin PRO\Kewos\Assets site\`, en gardant la structure :
+Prévisualisation locale : `node _local-server.js`, puis <http://localhost:5173/>.
 
 ```
-Assets site/
-├── index.html
-├── mentions-legales.html
-├── hero-section.jpg      ← l'image de la hero, à poser ici
-├── affiche.jpg           ← optionnel
-├── portrait.jpg          ← optionnel
-├── css/style.css
-└── js/main.js
+index.html            accueil (spectacle, acting, dates, vidéos, espace pro)
+casting.html          formulaire pour les directeurs de casting
+sousbock.html         page du QR code des sous-bocks (non liée, non indexée) + horoscope
+mentions-legales.html
+404.html              chemins absolus : s'affiche à n'importe quelle adresse
+robots.txt, sitemap.xml, favicon.svg
+css/style.css         styles du site ; css/sousbock.css pour la page sous-bock
+js/main.js            comportements du site ; js/sousbock.js pour la page sous-bock
+images/               photos optimisées (WebP) ; images/partage.jpg pour les réseaux sociaux
+documents/            CV et book photos en PDF (liens dans Acting et sur la page casting)
+Assets site/          photos brutes, hors dépôt (.gitignore)
 ```
 
-Les images sont cherchées à côté de `index.html`, puis dans `images/`. Le script teste
-automatiquement `.jpg`, `.jpeg`, `.png`, `.webp` et `.avif` : pas besoin de renommer le fichier
-ni de toucher au HTML. Si une image manque, un motif rayé prend sa place au lieu d'une icône cassée.
+## Mise en ligne : à faire une fois
 
-Format conseillé pour `hero-section` : 2400 × 1600 px minimum, sujet cadré dans le tiers haut de
-l'image (le texte occupe le bas). Compresser en WebP autour de 300 Ko.
+0. **Déployer depuis GitHub, pas par glisser-déposer du dossier.** Sur Netlify : « Add new site »
+   → « Import an existing project » → dépôt `RobzD2D/kewos`, sans commande de build, dossier de
+   publication `/`. Seuls les fichiers commités partent en ligne : `Assets site/` (133 Mo de photos
+   brutes) et `.mcp.json` (qui contient une clé d'API) restent sur l'ordinateur grâce au
+   `.gitignore`. Un glisser-déposer du dossier les publierait. Ensuite, dans « Domain management »,
+   ajouter `www.lekewos.fr` (et `lekewos.fr`) puis suivre les instructions DNS ; le HTTPS est
+   automatique. Le fichier `_redirects` renvoie les anciennes adresses Systeme.io (`/spectacle`,
+   `/contact`, `/book`, `/video`, `/arras2`) vers les bonnes sections.
+1. **Activer le formulaire casting.** Il envoie vers `le.kewos@gmail.com` via
+   [FormSubmit](https://formsubmit.co) (gratuit, sans compte). Une fois le site en ligne, le remplir
+   une fois : FormSubmit écrit alors à `le.kewos@gmail.com` un e-mail « Activate Form » sur lequel
+   il faut cliquer (vérifier les spams). Avant ce clic, le visiteur voit un message l'invitant à
+   écrire directement à l'adresse. L'alerte nouvelles dates est désactivée pour le moment : son
+   code est conservé en commentaire dans `index.html`, avec la marche à suivre pour la remettre.
+2. **Domaine.** `canonical`, `og:image`, `sitemap.xml` et `robots.txt` supposent
+   `https://www.lekewos.fr/`. À modifier si le site part sur une autre adresse.
+3. **Durée du spectacle.** L'accueil indique 1 h 20, la page sous-bock 1 h 10 (reprise de
+   l'ancienne page) : garder la bonne des deux.
 
-## À remplacer avant mise en ligne
+## Tenir le site à jour
 
-Les dates, crédits, e-mail de contact et liens sociaux ont été repris du site officiel
-[lekewos.fr](https://www.lekewos.fr/) le 2026-09-05. Ce qui reste à vérifier ou compléter :
-
-| Où | Quoi |
-|---|---|
-| Section `#dates` | Les salles précises ne sont pas indiquées sur le site officiel – seul le département est affiché (ex. « Arras (62) »). À compléter si vous avez les noms de salle. |
-| `data-yt="dQw4w9WgXcQ"` | Toujours un identifiant factice. L'identifiant YouTube de chaque vidéo (ce qui suit `v=` dans l'URL) |
-| `hero-next-value` | Pointe actuellement sur la date la plus proche trouvée (Compiègne, 24/09/2026) – à tenir à jour manuellement au fil des annonces |
-| `Durée` dans la fiche du spectacle (« 1 h 20 ») | Les sources trouvées se contredisent (environ 40 min vs environ 1 h selon les avis) – à confirmer |
-| Section `#acting` | Crédits réels intégrés (Tapie, Le Livreur de Noël, Face à Face, César Wagner) ; un lien de bande démo et une photo plus définitive restent optionnels |
-| `action="#"` du formulaire | L'endpoint Brevo, Mailchimp ou autre |
-| `mentions-legales.html` | Créée avec le contenu réel (éditeur, RGPD), hébergeur mis à jour sur Netlify. Il manque encore les CGU et la Politique de confidentialité séparées si vous les voulez sur des pages dédiées. |
-| Balise `canonical` et `og:image` | Domaine placeholder `kewos.fr` – le vrai domaine officiel est `lekewos.fr` |
+- **Dates** : dans `index.html`, section `#dates`. Une date passée disparaît d'elle-même le
+  lendemain et le bandeau « Prochaine date » du hero suit la première date non complète ; il faut
+  quand même retirer les anciennes lignes du HTML de temps en temps.
+- **Vidéos** : `data-yt` = ce qui suit `v=` dans l'adresse YouTube.
+- **Horoscopes** (page sous-bock) : blocs `data-horoscope` de `sousbock.html`. Jamais deux fois
+  le même d'affilée sur un même téléphone.
 
 ## Statuts de date disponibles
 
@@ -65,7 +74,9 @@ Les tampons s'abattent avec un léger rebond quand la ligne entre dans l'écran.
 - **Animations au scroll** : `IntersectionObserver`, déclenchement unique, cascade sur les listes
   via `data-stagger`. Tout est désactivé si le visiteur a coché « réduire les animations ».
 - **Vidéos** : aucune requête vers YouTube tant qu'on ne clique pas. Lecture en `youtube-nocookie`
-  dans une `<dialog>` native. Rien à déclarer côté bandeau cookies.
+  dans une `<dialog>` native. Tout élément portant `data-yt` ouvre le lecteur (bande démo comprise).
+- **Formulaires** : `form[data-send]` est envoyé en JSON à FormSubmit sans quitter la page ; sans
+  JavaScript, l'attribut `action` prend le relais. Champ piège `_honey` contre les robots.
 - **Accessibilité** : lien d'évitement, focus visible, contrastes vérifiés, navigation au clavier
   sur le menu et les vidéos.
 - Pas de framework, pas de cookie, pas de tracker. Ajouter GA4 ou Meta Pixel demandera un bandeau

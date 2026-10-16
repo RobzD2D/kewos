@@ -1,0 +1,442 @@
+/* =====================================================================
+   KEWOS — PAGE SOUS-BOCK (QR code)
+   S'appuie sur style.css : ne figure ici que ce qui est propre à la page.
+   Mobile d'abord : on la découvre au bar, téléphone en main.
+   ===================================================================== */
+
+/* Pas d'en-tête fixe sur cette page : les ancres peuvent coller au bord. */
+.page-sousbock section[id]{ scroll-margin-top:1rem; }
+
+/* ------------------------------ 1. Hero : l'affiche ------------------------------ */
+/* Mobile : l'affiche en pleine largeur, le texte remonte sur son pied assombri.
+   Ordinateur : texte à gauche, affiche à droite sur un halo flouté d'elle-même. */
+.sb-hero{
+  min-height:0;
+  display:block;
+  padding:0 0 clamp(2.8rem,8vw,4rem);
+}
+
+.sb-hero-glow{ display:none; }
+.sb-hero-grid{ position:relative; z-index:2; }
+
+/* Animation CSS pure : l'affiche s'affiche même si le script ne charge pas. */
+.sb-poster{
+  position:relative;
+  margin:0;
+  animation:sb-poster-in 1.1s var(--ease-out) .05s both;
+}
+.sb-poster img{ width:100%; height:auto; }
+.sb-poster::after{
+  content:"";
+  position:absolute; inset:auto 0 0 0;
+  height:45%;
+  background:linear-gradient(to top, var(--scene) 8%, rgba(11,14,19,.75) 45%, rgba(11,14,19,0));
+}
+@keyframes sb-poster-in{
+  from{ opacity:0; transform:scale(1.04); }
+  to{ opacity:1; transform:none; }
+}
+
+.sb-hero-body{ margin-top:-6.5rem; }
+
+.sb-hero .hero-title .l1{
+  font-size:clamp(.85rem, .72rem + .5vw, 1.1rem);
+  letter-spacing:.24em;
+}
+.sb-hero .hero-title .l2{ font-size:clamp(2.5rem, 1rem + 5vw, 4.6rem); }
+
+/* La machine à écrire, recalée sur « Samedi » (6 lettres) puis « 30 janvier » (10) */
+.sb-hero.is-ready .type-line:nth-child(1){ animation:type-reveal .45s steps(6,end) .35s forwards; }
+.sb-hero.is-ready .type-line:nth-child(2){ animation:type-reveal .7s steps(10,end) .85s forwards; }
+
+/* Chorégraphie du site, un peu resserrée : le bouton arrive plus tôt. */
+.sb-hero.is-ready .hero-pitch{ transition-delay:1.2s; }
+.sb-hero.is-ready .hero-actions{ transition-delay:1.3s; }
+
+@media (min-width:900px){
+  .sb-hero{
+    min-height:100svh;
+    display:flex; align-items:center;
+    padding:clamp(2.5rem,5vw,4rem) 0;
+  }
+  .sb-hero-glow{
+    display:block;
+    position:absolute; inset:0;
+    background:url("../images/affiche.webp") center 30% / cover no-repeat;
+    filter:blur(56px) saturate(1.25) brightness(.38);
+    transform:scale(1.2);
+  }
+  .sb-hero-grid{
+    width:100%; max-width:var(--wrap);
+    margin-inline:auto; padding-inline:var(--pad);
+    display:grid;
+    grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+    gap:clamp(2.5rem,6vw,5rem);
+    align-items:center;
+  }
+  /* Largeur bornée par la hauteur d'écran pour que l'affiche tienne entière */
+  .sb-poster{
+    order:2;
+    justify-self:center;
+    width:min(100%, 460px, 59svh);
+    rotate:1.5deg;
+    border-radius:6px;
+    overflow:hidden;
+    box-shadow:0 50px 90px -40px rgba(0,0,0,.9), 0 0 0 1px rgba(255,255,255,.06);
+  }
+  .sb-poster::after{ display:none; }
+  .sb-hero-body{ margin:0; padding:0; }
+}
+
+/* ------------------------------ 2. Convocation ------------------------------ */
+.sb-infos{ background:var(--papier); }
+
+.convoc{
+  --convoc-pad:clamp(1.4rem,4.5vw,2.8rem);
+  position:relative;
+  max-width:760px;
+  margin-inline:auto;
+  padding:var(--convoc-pad);
+  overflow:hidden;
+  background:#FFFDF8;
+  border:1px solid var(--encre-14);
+  border-radius:8px;
+  box-shadow:0 40px 70px -45px rgba(15,48,67,.6);
+}
+
+.convoc-top{
+  display:flex; justify-content:space-between; gap:1rem;
+  margin-bottom:1.6rem;
+  padding-bottom:.9rem;
+  border-bottom:1px solid var(--encre-14);
+  font-family:var(--machine);
+  font-size:.76rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--encre-60);
+}
+.convoc-top span:first-child{ color:var(--tampon); font-weight:700; }
+
+.convoc-title{
+  font-size:clamp(1.9rem, 1.2rem + 2.6vw, 3rem);
+  margin-bottom:.5rem;
+}
+.convoc-lead{ margin:0 0 1.8rem; color:var(--encre-60); }
+
+.convoc .date-row{ padding-inline:clamp(.4rem,1.5vw,1rem); }
+
+/* Ligne de découpe du billet, avec ses deux encoches */
+.convoc-perfo{
+  position:relative;
+  margin:2rem calc(var(--convoc-pad) * -1);
+  border-top:2px dashed var(--encre-30);
+}
+.convoc-perfo::before,.convoc-perfo::after{
+  content:"";
+  position:absolute; top:-12px;
+  width:22px; height:22px;
+  border-radius:50%;
+  background:var(--papier);
+  border:1px solid var(--encre-14);
+}
+.convoc-perfo::before{ left:-12px; }
+.convoc-perfo::after{ right:-12px; }
+
+.convoc .fiche-meta{ margin-bottom:2rem; }
+.convoc .fiche-meta dd .link-glass{ color:var(--tampon); }
+
+.convoc-cta{ width:100%; }
+
+.sb-reassure{
+  margin:.9rem 0 0;
+  text-align:center;
+  font-family:var(--machine);
+  font-size:.76rem;
+  letter-spacing:.03em;
+  color:var(--encre-60);
+}
+
+/* ------------------------------ 3. Le spectacle ------------------------------ */
+.sb-spectacle{ background:var(--listing); }
+.sb-spectacle .prose strong{ font-weight:700; }
+.sb-scene img{ aspect-ratio:4/5; object-position:56% 35%; }
+
+.sb-kicker{
+  margin:2.4rem 0 1.1rem;
+  font-family:var(--machine);
+  font-size:.78rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--encre-60);
+}
+
+.programme{
+  list-style:none; margin:0; padding:0;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1.6rem 2rem;
+}
+.programme li{ border-top:2px solid var(--encre); padding-top:.9rem; }
+.programme-num{
+  font-family:var(--machine);
+  font-weight:700;
+  font-size:.85rem;
+  letter-spacing:.06em;
+  color:var(--tampon);
+}
+.programme h3{
+  font-size:1.2rem;
+  margin:.35rem 0;
+  font-variation-settings:"wdth" 108;
+}
+.programme p{ margin:0; font-size:.95rem; color:var(--encre-60); }
+.programme .programme-last{ border-color:var(--tampon); }
+.programme-last h3{ color:var(--tampon); }
+
+/* ------------------------------ 4. Avis ------------------------------ */
+.sb-avis{ background:var(--papier); }
+
+/* Chiffres et cartes d’avis : composants communs, dans style.css (section 10b). */
+
+/* ------------------------------ 5. Dernier appel ------------------------------ */
+.sb-final{ background:var(--encre); color:#F6F2EA; text-align:center; }
+.sb-final-inner{ display:flex; flex-direction:column; align-items:center; gap:1.6rem; }
+
+.sb-final-title{
+  font-size:clamp(2.4rem, 1.2rem + 5vw, 5rem);
+  color:var(--tampon);
+}
+.sb-bien{
+  display:block;
+  margin-top:.3em;
+  font-size:.78em;
+  color:#F6F2EA;
+}
+.sb-bien span{ display:inline-block; }
+/* Les « bien » arrivent un par un, le dernier plus fort que les autres */
+.sb-bien [data-reveal]{ transition-delay:calc(var(--i,0) * 130ms + .25s); }
+.sb-bien span:last-child{ color:var(--tampon-doux); }
+
+.sb-final-when{
+  margin:0;
+  font-family:var(--machine);
+  font-size:.9rem;
+  letter-spacing:.04em;
+  color:rgba(246,242,234,.72);
+}
+.sb-final .sb-reassure{ color:rgba(246,242,234,.5); }
+
+/* ------------------------------ 6. Barre de réservation ------------------------------ */
+.sb-bar{
+  position:fixed; z-index:90;
+  left:50%;
+  bottom:calc(.8rem + env(safe-area-inset-bottom, 0px));
+  width:min(560px, calc(100% - 1.6rem));
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  padding:.55rem .55rem .55rem 1.3rem;
+  border-radius:999px;
+  color:#F6F2EA;
+  opacity:0;
+  transform:translate(-50%, calc(100% + 2rem));
+  transition:transform .55s var(--ease-liquide), opacity .3s ease;
+}
+/* Plus opaque que le verre du site : la barre passe aussi sur les fonds clairs. */
+.sb-bar.glass{ background:rgba(15,48,67,.9); }
+.sb-bar.is-on{ opacity:1; transform:translate(-50%, 0); }
+
+.sb-bar-when{
+  margin:0; min-width:0;
+  display:flex; flex-direction:column;
+  line-height:1.25;
+}
+.sb-bar-when strong{
+  font-family:var(--display);
+  font-weight:800;
+  font-variation-settings:"wdth" 110;
+  font-size:.98rem;
+}
+.sb-bar-when span{
+  font-size:.8rem;
+  color:rgba(246,242,234,.7);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.sb-bar .btn{ flex-shrink:0; }
+
+/* ------------------------------ 7. Horoscope du jour ------------------------------ */
+/* Bouton pour rouvrir la carte, en haut à droite du hero */
+.sb-horo-open{
+  position:absolute; z-index:4;
+  top:clamp(.9rem,2.5vw,1.6rem);
+  right:calc(max(0px, (100% - var(--wrap)) / 2) + var(--pad));
+  padding:.5rem 1rem;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.28);
+  background:rgba(11,14,19,.45);
+  -webkit-backdrop-filter:blur(14px) saturate(170%);
+  backdrop-filter:blur(14px) saturate(170%);
+  color:#F6F2EA;
+  font-family:var(--machine);
+  font-size:.8rem;
+  letter-spacing:.04em;
+  cursor:pointer;
+  transition:background-color .3s, border-color .3s;
+}
+.sb-horo-open:hover,.sb-horo-open:focus-visible{ background:rgba(11,14,19,.72); border-color:rgba(255,255,255,.5); }
+.sb-horo-open[hidden]{ display:none; }
+
+html:has(.horoscope[open]){ overflow:hidden; }
+
+.horoscope{
+  width:min(440px, calc(100% - 2rem));
+  max-width:none; max-height:none;
+  margin:auto;
+  padding:0; border:0;
+  background:transparent;
+  color:#F6F2EA;
+  overflow:visible;
+}
+.horoscope::backdrop{
+  background:rgba(6,8,11,.84);
+  -webkit-backdrop-filter:blur(6px);
+  backdrop-filter:blur(6px);
+}
+.horoscope[open]{ animation:horo-in .6s var(--ease-out) both; }
+@keyframes horo-in{
+  from{ opacity:0; transform:translateY(28px) scale(.96); }
+}
+
+.horo-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:16px;
+  background:#0D1117;
+  box-shadow:0 40px 90px -30px rgba(0,0,0,.95);
+  transition:transform .28s ease-in-out;
+}
+/* Demi-tour de la carte au moment de la révéler */
+.horo-card.is-turning{ transform:perspective(1200px) rotateY(90deg); }
+
+/* Le liseré doré d'une carte de tarot. Au dos il est posé sur l'image ;
+   côté horoscope c'est la bordure même de la zone qui défile, pour que
+   le texte s'arrête au liseré au lieu de passer à travers. */
+.horo-back::after{
+  content:"";
+  position:absolute; inset:8px; z-index:4;
+  border:1px solid rgba(240,168,104,.42);
+  border-radius:10px;
+  pointer-events:none;
+}
+.horo-back[hidden],.horo-front[hidden]{ display:none; }
+
+/* Dos de la carte */
+.horo-back{ position:relative; }
+.horo-back img{
+  width:100%; height:auto;
+  max-height:calc(100svh - 2rem);
+  object-fit:cover;
+}
+.horo-back-body{
+  position:absolute; inset:auto 0 0 0; z-index:3;
+  display:flex; flex-direction:column; align-items:center; gap:.7rem;
+  padding:4.5rem 1.5rem 1.6rem;
+  text-align:center;
+  background:linear-gradient(to top, rgba(8,9,12,.95) 35%, rgba(8,9,12,0));
+}
+.horo-kicker{
+  margin:0 0 .3rem;
+  font-family:var(--machine);
+  font-size:.9rem;
+  letter-spacing:.03em;
+  color:#EBD9B4;
+  text-wrap:balance;
+}
+.horo-later{
+  padding:.55rem 1.2rem;
+  border:1px solid transparent;
+  border-radius:999px;
+  background:none;
+  font-family:var(--texte);
+  font-weight:600;
+  font-size:.92rem;
+  color:rgba(246,242,234,.68);
+  cursor:pointer;
+  transition:color .3s, background-color .3s, border-color .3s;
+}
+.horo-later:hover,.horo-later:focus-visible{
+  color:#F6F2EA;
+  background:rgba(255,255,255,.08);
+  border-color:rgba(255,255,255,.18);
+}
+
+/* Face révélée : l'horoscope */
+.horo-front{
+  margin:8px;
+  max-height:calc(100svh - 2rem - 18px);
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  padding:2rem 1.5rem 1.5rem;
+  border:1px solid rgba(240,168,104,.42);
+  border-radius:10px;
+  background:
+    radial-gradient(120% 60% at 50% 0%, rgba(240,168,104,.14), rgba(240,168,104,0) 60%),
+    #0D1117;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(240,168,104,.45) transparent;
+}
+.horo-front::-webkit-scrollbar{ width:6px; }
+.horo-front::-webkit-scrollbar-track{ background:transparent; }
+.horo-front::-webkit-scrollbar-thumb{ background:rgba(240,168,104,.45); border-radius:999px; }
+.horo-date{
+  margin:0 0 .6rem;
+  font-family:var(--machine);
+  font-size:.78rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--tampon-doux);
+}
+.horo-title{
+  margin:0 0 .4rem;
+  font-size:clamp(1.9rem, 1.5rem + 1.6vw, 2.4rem);
+  color:#F6F2EA;
+}
+.horo-title:focus{ outline:none; }
+.horo-num{
+  margin:0 0 1.4rem;
+  font-family:var(--machine);
+  font-size:.78rem;
+  letter-spacing:.06em;
+  color:rgba(246,242,234,.5);
+}
+.horo-num::before{ content:"✦ "; color:var(--tampon-doux); }
+
+.horo-list{ margin:0; border-top:1px solid rgba(240,168,104,.22); }
+.horo-list > div{ padding:1rem 0; border-bottom:1px solid rgba(240,168,104,.22); }
+.horo-list dt{
+  margin-bottom:.35rem;
+  font-family:var(--machine);
+  font-weight:700;
+  font-size:.78rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--tampon-doux);
+}
+.horo-list dd{ margin:0; font-size:.98rem; line-height:1.55; color:rgba(246,242,234,.88); }
+
+.horo-bonus{
+  margin-top:1.6rem;
+  display:flex; flex-direction:column; align-items:center; gap:.7rem;
+  text-align:center;
+}
+.horo-bonus p{ margin:0 0 .3rem; font-size:.92rem; color:rgba(246,242,234,.75); }
+.horo-bonus strong{ color:#F6F2EA; }
+.horo-bonus .btn{ width:100%; }
+
+/* ------------------------------ 8. Responsive ------------------------------ */
+@media (max-width:1000px){
+  .sb-spectacle .affiche{ max-width:340px; margin-inline:auto; }
+}
+
+@media (max-width:520px){
+  .programme{ grid-template-columns:1fr; }
+  .convoc-top span:last-child{ display:none; }
+}

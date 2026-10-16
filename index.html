@@ -5,15 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kéwos – Employé Modèle | Site officiel de l'humoriste</title>
 <meta name="description" content="Kéwos, acteur et humoriste originaire du Grand Est, en tournée avec son one-man show Employé Modèle. Toutes les dates, la billetterie, les vidéos et le contact pro.">
-<link rel="canonical" href="https://www.kewos.fr/">
+<link rel="canonical" href="https://www.lekewos.fr/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 
-<!-- Open Graph / partages -->
+<!-- Open Graph / partages : les réseaux exigent des adresses complètes -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Kéwos">
+<meta property="og:url" content="https://www.lekewos.fr/">
 <meta property="og:title" content="Kéwos – Employé Modèle">
 <meta property="og:description" content="Le one-man show de Kéwos sur les galères professionnelles et la grande question : « tu veux faire quoi plus tard ? »">
-<meta property="og:image" content="hero-section.jpg">
+<meta property="og:image" content="https://www.lekewos.fr/images/partage.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0F3043">
 
@@ -30,8 +34,14 @@
   "name": "Kéwos",
   "alternateName": "Kévin Ringenbach",
   "jobTitle": "Acteur, humoriste",
-  "url": "https://www.kewos.fr/",
-  "sameAs": ["https://www.instagram.com/le_kewos/"]
+  "url": "https://www.lekewos.fr/",
+  "image": "https://www.lekewos.fr/images/partage.jpg",
+  "sameAs": [
+    "https://www.instagram.com/le_kewos/",
+    "https://www.tiktok.com/@le_kewos",
+    "https://www.youtube.com/@le_kewos",
+    "https://www.facebook.com/profile.php?id=61577376923058"
+  ]
 }
 </script>
 </head>
@@ -55,8 +65,8 @@
       <span class="versus-vs" aria-hidden="true">VS</span>
 
       <button class="versus-choice versus-acting" type="button" data-target="#acting">
-        <img src="images/acting.jpg" alt=""
-             data-try="images/acting.jpg,images/acting.jpeg,images/acting.png,acting.jpg" decoding="async">
+        <img src="images/acting.webp" alt=""
+             data-try="images/acting.webp,images/acting.jpg" decoding="async">
         <span class="versus-label">Acting</span>
         <span class="versus-sub">Comédien – cinéma &amp; séries</span>
       </button>
@@ -73,6 +83,7 @@
     <nav class="nav" id="nav" aria-label="Navigation principale">
       <span class="nav-pill" aria-hidden="true"></span>
       <a href="#spectacle">Le spectacle</a>
+      <a href="#avis">Avis</a>
       <a href="#acting">Acting</a>
       <a href="#dates">Dates</a>
       <a href="#videos">Vidéos</a>
@@ -89,11 +100,11 @@
 
   <div class="menu-mobile glass" id="menuMobile" data-glass hidden>
     <a href="#spectacle">Le spectacle</a>
+    <a href="#avis">Avis du public</a>
     <a href="#acting">Acting</a>
     <a href="#dates">Dates</a>
     <a href="#videos">Vidéos</a>
     <a href="#parcours">Parcours</a>
-    <a href="#alerte">Alerte nouvelles dates</a>
     <a href="#pro">Contact pro</a>
     <a class="btn btn-solid" href="#dates">Réserver une place</a>
   </div>
@@ -104,10 +115,9 @@
   <!-- ══════════ HERO ══════════ -->
   <section class="hero" id="accueil">
     <div class="hero-media">
-      <!-- L'image « hero-section » : posez-la à côté de index.html.
-           Le script teste .jpg / .jpeg / .png / .webp / .avif automatiquement. -->
-      <img src="hero-section.jpg" alt="Kéwos sur scène dans son spectacle Employé Modèle"
-           data-try="hero-section.jpg,hero-section.jpeg,hero-section.png,hero-section.webp,hero-section.avif,images/hero-section.jpg,images/hero-section.png"
+      <!-- images/scene.webp : hero-section.jpg allégée (53 Ko au lieu de 2 Mo). -->
+      <img src="images/scene.webp" alt="Kéwos sur scène dans son spectacle Employé Modèle"
+           data-try="images/scene.webp,hero-section.jpg"
            fetchpriority="high" decoding="async">
     </div>
 
@@ -117,13 +127,14 @@
       <p class="hero-pitch">Depuis le collège, une seule question : « tu veux faire quoi plus tard&nbsp;? » Quinze ans de boulots plus tard, toujours pas de réponse. Mais un spectacle, oui.</p>
       <div class="hero-actions">
         <a class="btn btn-solid btn-lg" href="#dates">Voir les dates</a>
-        <a class="btn btn-glass btn-lg" href="#videos" data-glass>Regarder un extrait</a>
+        <a class="btn btn-glass btn-lg" href="#videos" data-glass>Regarder les vidéos</a>
       </div>
     </div>
 
+    <!-- Recalculé par le script à partir de la liste des dates (prochaine date non complète). -->
     <a class="hero-next" href="#dates">
       <span class="hero-next-label">Prochaine date</span>
-      <span class="hero-next-value">24.09 – Compiègne (60)</span>
+      <span class="hero-next-value">09.12 – Lille (59)</span>
       <span class="hero-next-cta">Il reste des places</span>
     </a>
   </section>
@@ -160,17 +171,76 @@
     </div>
   </section>
 
-  <!-- ══════════ ACTING ══════════ -->
+  <!-- ══════════ AVIS DU PUBLIC ══════════ -->
   <!--
-    Crédits repris du site officiel lekewos.fr. À compléter si disponible :
-    lien vers une bande démo, et une photo plus définitive que images/acting.jpg.
+    Avis repris tels quels de Billet Réduc (note et nombre d'avis relevés le 16/10/2026) :
+    https://www.billetreduc.com/spectacle/kewos-employe-modele-402364/avis
+    Penser à mettre le nombre à jour de temps en temps (ici et sur sousbock.html).
   -->
+  <section class="section avis-section" id="avis">
+    <div class="wrap">
+      <header class="section-head" data-reveal>
+        <h2 class="section-title">Ils y étaient</h2>
+        <p class="section-note">Ce que les spectateurs en disent sur Billet Réduc. Le public ne ment pas, il est juste parfois un peu enthousiaste.</p>
+      </header>
+
+      <dl class="avis-stats" data-stagger>
+        <div data-reveal><dt>note moyenne sur Billet Réduc</dt><dd>10/10</dd></div>
+        <div data-reveal><dt>avis de spectateurs</dt><dd>141</dd></div>
+        <div data-reveal><dt>prix du public (Drôlement bien) et prix du jury (Les Otarires)</dt><dd>2 prix</dd></div>
+      </dl>
+
+      <div class="avis-grid" data-stagger>
+        <figure class="avis" data-reveal>
+          <p class="avis-stars" aria-label="10 sur 10">★★★★★</p>
+          <h3>Une pépite à découvrir</h3>
+          <blockquote><p>«&nbsp;Si vous avez l'occasion, allez le voir sur scène, ça vaut vraiment le détour. J'ai découvert Kéwos sur Instagram depuis peu et j'ai accroché dès les premiers sketchs. De passage également sur Avignon, je n'ai pas hésité&nbsp;! Une très belle découverte, et je vais suivre la suite avec plaisir&nbsp;! Je recommande à 100&nbsp;%.&nbsp;»</p></blockquote>
+          <figcaption>Jessica <span>· juillet 2026</span></figcaption>
+        </figure>
+        <figure class="avis" data-reveal>
+          <p class="avis-stars" aria-label="10 sur 10">★★★★★</p>
+          <h3>Un spectacle qui tue&nbsp;!</h3>
+          <blockquote><p>«&nbsp;Drôle et émouvant, c'est bien écrit et très malin&nbsp;! Avec une super première partie qui met en appétit, c'était génial&nbsp;!&nbsp;»</p></blockquote>
+          <figcaption>Bénédicte <span>· septembre 2026</span></figcaption>
+        </figure>
+        <figure class="avis" data-reveal>
+          <p class="avis-stars" aria-label="10 sur 10">★★★★★</p>
+          <h3>Une bonne surprise</h3>
+          <blockquote><p>«&nbsp;Nous avons pris nos billets sans trop savoir à quoi nous attendre, juste après avoir découvert un de ses sketches sur Instagram. Nous n'avons pas regretté notre soirée. Un spectacle drôle et sans temps morts où Kéwos donne de sa personne en incarnant divers personnages&nbsp;; celui du grand-père laisse transparaître ses origines alsaciennes. Kéwos est parvenu à nous tenir en haleine jusqu'à la fin, d'ailleurs plutôt inattendue.&nbsp;»</p></blockquote>
+          <figcaption>Arlette <span>· juillet 2026</span></figcaption>
+        </figure>
+        <figure class="avis" data-reveal>
+          <p class="avis-stars" aria-label="10 sur 10">★★★★★</p>
+          <h3>Kevinou au top</h3>
+          <blockquote><p>«&nbsp;Bravo pour ce moment rempli d'amour, d'authenticité et surtout de fou rire&nbsp;!&nbsp;»</p></blockquote>
+          <figcaption>Nicolas <span>· septembre 2026</span></figcaption>
+        </figure>
+        <figure class="avis" data-reveal>
+          <p class="avis-stars" aria-label="10 sur 10">★★★★★</p>
+          <h3>Excellent</h3>
+          <blockquote><p>«&nbsp;Kéwos a vraiment été excellent, autant dans la manière de nous faire rire que dans l'accueil de ses spectateurs. Je recommande à 100&nbsp;%.&nbsp;»</p></blockquote>
+          <figcaption>Morgan <span>· juillet 2026</span></figcaption>
+        </figure>
+        <figure class="avis" data-reveal>
+          <p class="avis-stars" aria-label="10 sur 10">★★★★★</p>
+          <h3>Franchement top</h3>
+          <blockquote><p>«&nbsp;On a passé un super moment du début à la fin, un spectacle drôle, authentique et aussi émouvant, merci encore&nbsp;!&nbsp;»</p></blockquote>
+          <figcaption>Léa <span>· septembre 2026</span></figcaption>
+        </figure>
+      </div>
+
+      <p class="avis-source" data-reveal><a href="https://www.billetreduc.com/spectacle/kewos-employe-modele-402364/avis" target="_blank" rel="noopener">Lire les 141 avis sur Billet Réduc</a></p>
+    </div>
+  </section>
+
+  <!-- ══════════ ACTING ══════════ -->
+  <!-- Crédits et bande démo repris du site officiel lekewos.fr. -->
   <section class="section acting" id="acting">
     <div class="wrap grid-acting">
 
       <figure class="acting-still" data-reveal>
-        <img src="images/acting.jpg" alt="Kéwos, alias Kévin Ringenbach, en tournage"
-             data-try="images/acting.jpg,images/acting.jpeg,images/acting.png,acting.jpg" loading="lazy" decoding="async">
+        <img src="images/acting.webp" alt="Kéwos, alias Kévin Ringenbach, en tournage"
+             data-try="images/acting.webp,images/acting.jpg" loading="lazy" decoding="async">
         <figcaption>Kévin Ringenbach – comédien pour le cinéma et les séries</figcaption>
       </figure>
 
@@ -180,16 +250,22 @@
         <dl class="fiche-meta">
           <div><dt>Nom de scène</dt><dd>Kéwos</dd></div>
           <div><dt>Nom civil</dt><dd>Kévin Ringenbach</dd></div>
-          <div><dt>Crédits</dt><dd>Tapie, Le Livreur de Noël, Face à Face (S3), César Wagner</dd></div>
+          <div><dt>Cinéma</dt><dd>L'Amour ouf, Claude, Du fioul dans les artères</dd></div>
+          <div><dt>TV &amp; séries</dt><dd>Scènes de ménages, Face à Face (S3), Le Livreur de Noël, César Wagner (S3), Tapie (Netflix)</dd></div>
           <div><dt>Basé à</dt><dd>Grand Est – mobile France entière</dd></div>
         </dl>
 
+        <!-- Crédits repris du CV (documents/kewos-cv.pdf). -->
         <div class="prose">
-          <p>Avant la scène, il y a eu les plateaux : silhouettes et seconds rôles pour le cinéma et la télévision, notamment dans <em>Tapie</em>, <em>Le Livreur de Noël</em>, <em>Face à Face</em> (saison 3) et <em>César Wagner</em>.</p>
+          <p>Avant la scène, il y a eu les plateaux, et il y en a toujours&nbsp;: une silhouette dans <em>L'Amour ouf</em> de Gilles Lellouche, des rôles dans <em>Claude</em> de Clément Michel et <em>Du fioul dans les artères</em>, à la télévision dans <em>Scènes de ménages</em>, <em>Face à Face</em> ou <em>César Wagner</em>, et Rudi Völler dans <em>Tapie</em> sur Netflix.</p>
           <p>Aujourd'hui, Kéwos continue de mener les deux de front – la scène du stand-up et celle du tournage – avec la même énergie comique.</p>
         </div>
 
-        <a class="btn btn-line" href="mailto:le.kewos@gmail.com">Contacter pour un casting</a>
+        <div class="fiche-actions">
+          <button class="btn btn-solid" type="button" data-yt="v7IOo6DcUmQ" data-title="Bande démo – Kévin Ringenbach">Voir la bande démo</button>
+          <a class="btn btn-line" href="casting.html">Contacter pour un casting</a>
+        </div>
+        <p class="fiche-docs">À télécharger&nbsp;: <a href="documents/kewos-cv.pdf" target="_blank" rel="noopener">CV</a> · <a href="documents/kewos-book-photos.pdf" target="_blank" rel="noopener">Book photos</a> <span>(PDF)</span></p>
       </div>
 
     </div>
@@ -197,52 +273,35 @@
 
   <!-- ══════════ DATES ══════════ -->
   <!--
-    Dates reprises du site officiel lekewos.fr (page /spectacle). Les salles
-    précises n'y sont pas indiquées : seul le département est affiché en attendant.
+    Dates à venir uniquement (sources : lekewos.fr/spectacle et casinosbarriere.com).
+    Une date passée disparaît d'elle-même le lendemain grâce au script, mais pensez
+    à la retirer ici aussi. Pour une date complète : <span class="stamp">Complet</span>.
   -->
   <section class="section dates" id="dates">
     <div class="wrap">
       <header class="section-head" data-reveal>
         <h2 class="section-title">Les dates</h2>
-        <p class="section-note">Une salle près de chez vous manque à l'appel&nbsp;? <a href="#alerte">Prévenez-moi</a>, je transmets aux programmateurs.</p>
+        <p class="section-note">Une salle près de chez vous manque à l'appel&nbsp;? <a href="#pro">Écrivez-moi</a>, je transmets aux programmateurs.</p>
       </header>
 
       <ol class="date-list" data-stagger>
 
         <li class="date-row" data-reveal>
-          <time class="date-when" datetime="2026-04-30"><span class="d">30</span><span class="m">avril</span><span class="y">2026</span></time>
-          <span class="date-where"><strong>Sélestat</strong><em>(67)</em></span>
+          <time class="date-when" datetime="2026-12-09T21:00"><span class="d">09</span><span class="m">déc.</span><span class="y">2026</span></time>
+          <span class="date-where"><strong>Lille</strong><em>(59) · Le Spotlight · 21h</em></span>
+          <span class="date-status"><a class="btn btn-line" href="https://www.fnacspectacles.com/event/kewos-employe-modele-le-spotlight-21520123/" target="_blank" rel="noopener">Réserver</a></span>
+        </li>
+
+        <li class="date-row" data-reveal>
+          <time class="date-when" datetime="2027-01-29T20:30"><span class="d">29</span><span class="m">janv.</span><span class="y">2027</span></time>
+          <span class="date-where"><strong>Ribeauvillé</strong><em>(68) · Casino Barrière · 20h30</em></span>
           <span class="date-status"><span class="stamp">Complet</span></span>
         </li>
 
         <li class="date-row" data-reveal>
-          <time class="date-when" datetime="2026-05-27"><span class="d">27</span><span class="m">mai</span><span class="y">2026</span></time>
-          <span class="date-where"><strong>Arras</strong><em>(62)</em></span>
-          <span class="date-status"><a class="btn btn-line" href="https://www.billetweb.fr/kewos-employe-modele" target="_blank" rel="noopener">Réserver</a></span>
-        </li>
-
-        <li class="date-row" data-reveal>
-          <time class="date-when" datetime="2026-07"><span class="d">–</span><span class="m">juillet</span><span class="y">2026</span></time>
-          <span class="date-where"><strong>Festival d'Avignon</strong><em>(84)</em></span>
-          <span class="date-status"><span class="stamp">Bientôt</span></span>
-        </li>
-
-        <li class="date-row" data-reveal>
-          <time class="date-when" datetime="2026-09-24"><span class="d">24</span><span class="m">sept.</span><span class="y">2026</span></time>
-          <span class="date-where"><strong>Compiègne</strong><em>(60)</em></span>
-          <span class="date-status"><a class="btn btn-line" href="https://letheatreamoustaches.com/programmation/reservation/342" target="_blank" rel="noopener">Réserver</a></span>
-        </li>
-
-        <li class="date-row" data-reveal>
-          <time class="date-when" datetime="2026-09-30"><span class="d">30</span><span class="m">sept.</span><span class="y">2026</span></time>
-          <span class="date-where"><strong>Metz</strong><em>(57)</em></span>
-          <span class="date-status"><a class="btn btn-line" href="https://www.billetreduc.com/spectacle/kewos-dans-employe-modele-402404" target="_blank" rel="noopener">Réserver</a></span>
-        </li>
-
-        <li class="date-row" data-reveal>
-          <time class="date-when" datetime="2026-12-09"><span class="d">09</span><span class="m">déc.</span><span class="y">2026</span></time>
-          <span class="date-where"><strong>Lille</strong><em>(59)</em></span>
-          <span class="date-status"><a class="btn btn-line" href="https://www.billetreduc.com/spectacle/kewos-employe-modele-402364" target="_blank" rel="noopener">Réserver</a></span>
+          <time class="date-when" datetime="2027-01-30T20:30"><span class="d">30</span><span class="m">janv.</span><span class="y">2027</span></time>
+          <span class="date-where"><strong>Ribeauvillé</strong><em>(68) · Casino Barrière · 20h30</em></span>
+          <span class="date-status"><a class="btn btn-line" href="https://www.casinosbarriere.com/ribeauville/spectacle/kewos-employe-modele" target="_blank" rel="noopener">Réserver</a></span>
         </li>
 
       </ol>
@@ -254,31 +313,38 @@
     <div class="wrap">
       <header class="section-head" data-reveal>
         <h2 class="section-title">Vidéos</h2>
-        <p class="section-note">Des extraits, des passages en club, et quelques trucs filmés dans une cuisine.</p>
+        <p class="section-note">Le spectacle, les passages sur scène, et quelques trucs filmés dans une cuisine.</p>
       </header>
 
-      <p class="videos-kicker" data-reveal>Extraits du spectacle</p>
-      <!-- Remplacez data-yt par l'identifiant de la vidéo YouTube (ce qui suit v=) -->
+      <!-- Vidéos YouTube de @le_kewos reprises de lekewos.fr. data-yt = ce qui suit v= dans l'adresse. -->
+      <p class="videos-kicker" data-reveal>Sur YouTube</p>
       <div class="video-grid" data-stagger>
         <article class="video" data-reveal>
-          <button class="video-play" data-yt="dQw4w9WgXcQ" data-title="Extrait – Employé Modèle">
-            <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+          <button class="video-play" data-yt="4GRtOl8VH_w" data-title="Employé Modèle">
+            <img src="https://i.ytimg.com/vi/4GRtOl8VH_w/hqdefault.jpg" alt="" loading="lazy" decoding="async">
             <span class="video-icon" aria-hidden="true"></span>
-            <span class="video-label">Extrait du spectacle<em>Lire la vidéo</em></span>
+            <span class="video-label">Employé Modèle<em>Lire la vidéo</em></span>
           </button>
         </article>
         <article class="video" data-reveal>
-          <button class="video-play" data-yt="dQw4w9WgXcQ" data-title="Passage en comedy club">
-            <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+          <button class="video-play" data-yt="7wVqvTNIW6o" data-title="L'invité – Kéwos">
+            <img src="https://i.ytimg.com/vi/7wVqvTNIW6o/hqdefault.jpg" alt="" loading="lazy" decoding="async">
             <span class="video-icon" aria-hidden="true"></span>
-            <span class="video-label">Passage en comedy club<em>Lire la vidéo</em></span>
+            <span class="video-label">L'invité – Kéwos<em>Lire la vidéo</em></span>
           </button>
         </article>
         <article class="video" data-reveal>
-          <button class="video-play" data-yt="dQw4w9WgXcQ" data-title="Teaser 2026">
-            <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+          <button class="video-play" data-yt="gYkX5cPIC4E" data-title="After show à l'Ed&amp;n de Sausheim">
+            <img src="https://i.ytimg.com/vi/gYkX5cPIC4E/hqdefault.jpg" alt="" loading="lazy" decoding="async">
             <span class="video-icon" aria-hidden="true"></span>
-            <span class="video-label">Teaser de la tournée<em>Lire la vidéo</em></span>
+            <span class="video-label">After show à l'Ed&amp;n de Sausheim<em>Lire la vidéo</em></span>
+          </button>
+        </article>
+        <article class="video" data-reveal>
+          <button class="video-play" data-yt="oW-xAyQh93s" data-title="T'as pas encore pris ta place ?">
+            <img src="https://i.ytimg.com/vi/oW-xAyQh93s/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            <span class="video-icon" aria-hidden="true"></span>
+            <span class="video-label">T'as pas encore pris ta place&nbsp;?<em>Lire la vidéo</em></span>
           </button>
         </article>
       </div>
@@ -315,8 +381,8 @@
       <p class="videos-kicker" data-reveal>Sur Instagram</p>
       <div class="insta-grid" data-stagger>
         <article class="insta-card" data-reveal>
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/le_kewos/reel/DF5mDuxNj-P/" data-instgrm-version="14">
-            <a href="https://www.instagram.com/le_kewos/reel/DF5mDuxNj-P/" target="_blank" rel="noopener">Voir sur Instagram</a>
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DVv6uUaCENL/" data-instgrm-version="14">
+            <a href="https://www.instagram.com/reel/DVv6uUaCENL/" target="_blank" rel="noopener">Voir sur Instagram</a>
           </blockquote>
         </article>
         <article class="insta-card" data-reveal>
@@ -359,32 +425,42 @@
     </div>
   </section>
 
-  <!-- ══════════ ALERTE ══════════ -->
+  <!-- ══════════ ALERTE NOUVELLES DATES : DÉSACTIVÉE POUR LE MOMENT ══════════
+    Pour la remettre : supprimer cette ligne de commentaire et la ligne « FIN » plus bas,
+    puis rajouter le lien « Alerte nouvelles dates » dans le menu mobile.
+    Chaque inscription arrive par e-mail sur le.kewos@gmail.com (service FormSubmit, voir js/main.js).
+
   <section class="section alerte" id="alerte">
     <div class="wrap alerte-inner" data-reveal>
       <div>
         <h2 class="section-title">Alerte nouvelles dates</h2>
         <p>Les places partent souvent avant l'annonce publique. Laissez votre e-mail et votre ville : vous serez prévenu en premier quand une date tombe près de chez vous.</p>
       </div>
-      <!-- Branchez l'attribut action sur Brevo, Mailchimp ou votre outil d'e-mailing -->
-      <form class="alerte-form" action="#" method="post" novalidate>
+      <form class="alerte-form" action="https://formsubmit.co/le.kewos@gmail.com" method="post" novalidate
+            data-send data-success="C'est noté. Vous serez prévenu dès la prochaine annonce.">
+        <input type="hidden" name="_subject" value="Alerte nouvelles dates – nouvelle inscription">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="field">
           <span>Votre e-mail</span>
           <input type="email" name="email" required autocomplete="email" placeholder="prenom@exemple.fr">
         </label>
         <label class="field">
           <span>Votre ville</span>
-          <input type="text" name="ville" autocomplete="address-level2" placeholder="Mulhouse">
+          <input type="text" name="Ville" autocomplete="address-level2" placeholder="Mulhouse">
         </label>
         <label class="check">
-          <input type="checkbox" name="consent" required>
-          <span>J'accepte de recevoir les annonces de dates par e-mail. Désinscription en un clic.</span>
+          <input type="checkbox" name="Consentement" value="Oui" required>
+          <span>J'accepte de recevoir les annonces de dates par <span class="nowrap">e-mail</span>. Désinscription sur simple demande.</span>
         </label>
         <button class="btn btn-solid" type="submit">Me prévenir</button>
         <p class="form-msg" role="status" aria-live="polite"></p>
       </form>
     </div>
   </section>
+
+  FIN DE L'ALERTE DÉSACTIVÉE ══════════ -->
 
   <!-- ══════════ PRO ══════════ -->
   <section class="section pro" id="pro">
@@ -411,6 +487,11 @@
             <h3>Entreprises &amp; privé</h3>
             <p>Soirées d'entreprise, arbres de Noël, séminaires. Oui, c'est ironique.</p>
             <a class="link-glass" href="mailto:le.kewos@gmail.com" data-glass>le.kewos@gmail.com</a>
+          </div>
+          <div class="pro-card" data-reveal>
+            <h3>Casting</h3>
+            <p>Directeurs de casting, productions, agents&nbsp;: un formulaire pour proposer un rôle.</p>
+            <a class="link-glass" href="casting.html" data-glass>Proposer un rôle</a>
           </div>
         </div>
       </div>
@@ -440,6 +521,7 @@
     <nav class="footer-links" aria-label="Liens utiles">
       <a href="#dates">Dates</a>
       <a href="#pro">Contact pro</a>
+      <a href="casting.html">Casting</a>
       <a href="mentions-legales.html">Mentions légales</a>
     </nav>
 

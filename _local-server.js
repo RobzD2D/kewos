@@ -22,11 +22,16 @@ const MIME = {
   '.ico': 'image/x-icon',
   '.woff': 'font/woff',
   '.woff2': 'font/woff2',
+  '.pdf': 'application/pdf',
+  '.xml': 'application/xml; charset=utf-8',
+  '.txt': 'text/plain; charset=utf-8',
 };
 
 const server = http.createServer((req, res) => {
   let reqPath = decodeURIComponent(req.url.split('?')[0]);
   if (reqPath === '/') reqPath = '/index.html';
+  // Comme Netlify : /sousbock sert sousbock.html
+  if (!path.extname(reqPath)) reqPath += '.html';
 
   const filePath = path.normalize(path.join(ROOT, reqPath));
   if (!filePath.startsWith(ROOT)) {
