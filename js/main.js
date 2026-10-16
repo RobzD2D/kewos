@@ -98,6 +98,17 @@
   }
   if (hero) requestAnimationFrame(function () { hero.classList.add('is-ready'); });
 
+  // Machine à écrire : une fois la ligne tapée, on retire le masque. Safari (iPhone)
+  // s'arrête parfois sur l'avant-dernière étape et laissait la dernière lettre
+  // à moitié cachée (« 30 JANVIEI »).
+  document.querySelectorAll('.type-line').forEach(function (line) {
+    line.addEventListener('animationend', function (e) {
+      if (e.target !== line || e.pseudoElement) return; // ignore le curseur (::after)
+      line.style.animation = 'none';
+      line.style.clipPath = 'none';
+    });
+  });
+
   /* ---------- 3. En-tête : compacte dès qu'on quitte le hero ---------- */
   var header = document.getElementById('siteHeader');
   if (header) {
