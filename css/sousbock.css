@@ -45,9 +45,9 @@
 }
 .sb-hero .hero-title .l2{ font-size:clamp(2.5rem, 1rem + 5vw, 4.6rem); }
 
-/* La machine à écrire, recalée sur « Samedi » (6 lettres) puis « 30 janvier » (10) */
-.sb-hero.is-ready .type-line:nth-child(1){ animation:type-reveal .45s steps(6,end) .35s forwards; }
-.sb-hero.is-ready .type-line:nth-child(2){ animation:type-reveal .7s steps(10,end) .85s forwards; }
+/* La machine à écrire, recalée sur « Mercredi » (8 lettres) puis « 9 décembre » (10) */
+.sb-hero.is-ready .type-line:nth-child(1){ animation:type-reveal .55s steps(8,end) .35s forwards; }
+.sb-hero.is-ready .type-line:nth-child(2){ animation:type-reveal .7s steps(10,end) .95s forwards; }
 
 /* Chorégraphie du site, un peu resserrée : le bouton arrive plus tôt. */
 .sb-hero.is-ready .hero-pitch{ transition-delay:1.2s; }
