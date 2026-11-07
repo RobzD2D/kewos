@@ -1,5 +1,6 @@
 /* =====================================================================
-   KEWOS — comportements propres à la page sous-bock
+   KEWOS — comportements propres à la page sous-bock (et à promo.html,
+   qui la reprend sans horoscope : la partie 1 ne s'y lance pas)
    1. Horoscope du jour  2. Barre de réservation
    ===================================================================== */
 (function () {
