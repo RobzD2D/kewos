@@ -250,6 +250,23 @@
     });
   });
 
+  // Vidéos hébergées sur le site : data-video = chemin du fichier MP4.
+  if (lightbox) document.querySelectorAll('[data-video]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      frame.style.aspectRatio = btn.getAttribute('data-ratio') || '16/9';
+      lightbox.classList.remove('is-vertical');
+      var video = document.createElement('video');
+      video.src = btn.getAttribute('data-video');
+      video.controls = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      video.setAttribute('aria-label', btn.getAttribute('data-title') || 'Vidéo');
+      frame.innerHTML = '';
+      frame.appendChild(video);
+      if (typeof lightbox.showModal === 'function') lightbox.showModal();
+    });
+  });
+
   if (closeBtn) closeBtn.addEventListener('click', closeVideo);
   if (lightbox) {
     lightbox.addEventListener('close', function () { frame.innerHTML = ''; });
